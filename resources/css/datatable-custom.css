@@ -1,0 +1,84 @@
+/* DataTable Styles */
+
+@media screen and (max-width: 1200px) {
+    div:has(> table.dataTable) {
+        overflow-y: auto;
+    }
+}
+
+/* table striped and head bg */
+table.table.dataTable {
+    margin: 2rem 0rem;
+}
+table.dataTable.table-striped {
+    --bs-table-striped-bg: #FFFFFF !important;
+}
+table.dataTable thead th {
+    background-color: #e5e7eb !important;
+}
+
+/* datatable button styles */
+.dataTables_wrapper .dt-buttons {
+    gap: 1rem;
+}
+.dataTables_wrapper .dt-buttons .btn {
+    border-radius: 0px;
+    background-color: #f3f4f6;
+    border: 1px #d1d5db solid;
+    color: #030712;
+    padding: 0.4rem 1rem;
+    font-size: 0.865rem;
+}
+.dataTables_wrapper .dt-buttons .btn:hover {
+    background-color: #3b82f6;
+    color: #FFFFFF;
+    border: transparent;
+}
+
+
+/* datatable search styles */
+.dataTables_filter label {
+    color: #FFFFFF;
+    font-size: 0px;
+}
+.dataTables_filter label input[type=search] {
+    background-color: #FFFFFF;
+    border: 1px #9ca3af solid;
+    border-radius: 5px;
+}
+
+/* datatable per-page-selector styles */
+div.row:has(.dataTables_length){
+    margin-top: 1rem;
+}
+.dataTables_length label {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    text-wrap: nowrap;
+}
+.dataTables_length label input.form-select {
+    width: unset;
+}
+
+/* media queries */
+@media screen and (min-width: 760px) {
+    .dataTables_filter {
+        float: right;
+    }
+    .dataTables_paginate {
+        float: right;
+    }
+}
+@media screen and (max-width: 760px) {
+    .dataTables_filter {
+        margin-top: 0.5rem;
+    }
+    .dataTables_paginate {
+        margin-top: 0.5rem;
+    }
+}
+
+.select2 {
+    width: 100% !important;
+}
