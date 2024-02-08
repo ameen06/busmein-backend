@@ -50,6 +50,8 @@ Route::prefix('app')->middleware('auth')->group(function () {
     Route::get('media', [MediaController::class, 'index'])->name('media.index');
     Route::post('media/upload/temp', [MediaController::class, 'temp_upload'])->name('media.upload.temp');
     Route::post('media/upload', [MediaController::class, 'store'])->name('media.store');
+    Route::delete('media/{media}', [MediaController::class, 'destroy'])->name('media.destroy');
+    Route::put('media/{media}', [MediaController::class, 'update'])->name('media.update');
 
     Route::get('destinations', function(){
         return abort(500, 'Internal Server Error');

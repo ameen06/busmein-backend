@@ -26,6 +26,12 @@
                     <span class="ms-4 text-lg {{ Route::current()->getName() == 'destinations' ? 'text-blue-600 font-bold' : '' }}">Destinations</span>
                 </a>
             </li>
+            <li>
+                <a href="{{ route('destinations') }}" class="w-full flex items-center px-4 py-3 text-gray-900 group {{ Route::current()->getName() == 'destinations' ? 'bg-slate-100' : 'hover:bg-gray-100' }}">
+                    <svg class="w-5 h-5 transition duration-75 {{ Route::current()->getName() == 'destinations' ? 'fill-blue-600' : 'fill-gray-500 group-hover:fill-gray-900' }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 12c2.206 0 4-1.794 4-4s-1.794-4-4-4-4 1.794-4 4 1.794 4 4 4zm1.5 1H8c-3.309 0-6 2.691-6 6v1h15v-1c0-3.309-2.691-6-6-6z"></path><path d="M16.604 11.048a5.67 5.67 0 0 0 .751-3.44c-.179-1.784-1.175-3.361-2.803-4.44l-1.105 1.666c1.119.742 1.8 1.799 1.918 2.974a3.693 3.693 0 0 1-1.072 2.986l-1.192 1.192 1.618.475C18.951 13.701 19 17.957 19 18h2c0-1.789-.956-5.285-4.396-6.952z"></path></svg>
+                    <span class="ms-4 text-lg {{ Route::current()->getName() == 'destinations' ? 'text-blue-600 font-bold' : '' }}">Administration</span>
+                </a>
+            </li>
             <li class="hidden">
                 <button type="button" class="flex items-center w-full px-4 py-3 text-base text-gray-900 transition duration-75 group hover:bg-gray-100" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
                     <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">

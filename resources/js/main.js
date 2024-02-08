@@ -12,4 +12,12 @@ $(document).ready(function(){
         $(`#${modal} form input`).val('');
         $(`#${modal} form #supplier-select`).val('').trigger('change');
     })
+
+    // datatable actions dropdown
+    $(document).mouseup(function(e) {
+        var container = $(".actionsDropdownContent");
+        if (!container.is(e.target) && container.has(e.target).length === 0) {
+            $(".actionsDropdownContent").hide();
+        }
+    });
 });
