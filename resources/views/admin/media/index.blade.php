@@ -43,7 +43,7 @@
                     @csrf
                     <div class="p-4 md:p-5 space-y-4">
                         <div class="w-full">
-                            <input type="file" class="create-media-pond min-h-24" name="filepond"/>
+                            <input type="file" class="media-pond min-h-24" name="filepond"/>
                         </div>
                         <div class="mb-0">
                             <label for="title" class="block mb-2 text-sm font-medium text-gray-900">Title</label>
@@ -121,8 +121,17 @@ $('.media-pond').filepond({
     acceptedFileTypes: ['image/*'],
     server: {
         url: '{{route('media.upload.temp')}}',
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        process: {
+            url: '',
+            method: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            withCredentials: false,
+            ondata: (formData) => {
+                formData.append('_token', $('meta[name="csrf-token"]').attr('content'));
+                return formData;
+            },
         },
     }
 });
