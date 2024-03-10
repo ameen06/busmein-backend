@@ -29,12 +29,14 @@ class MediaController extends Controller
                 $path = $image->storeAs('bumein/media', $filename, 'imagekit');
 
                 if(!$path){
-                    return null;
+                    return response()->json([
+                        'message' => 'failed uploading file to imagekit server'
+                    ], 500);
                 }
 
                 DB::beginTransaction();
                 Media::create([
-                    'url' => config('filesystems.disks.imagekit.endpoint_url') . '/' . $path,
+                    'url' => config('filesystems.disks.imagekit.endpoint_url') . $path,
                     'path' => $path
                 ]);
                 DB::commit();
@@ -42,7 +44,9 @@ class MediaController extends Controller
                 return $filename;
             }
         }catch(Exception $error){
-            return null;
+            return response()->json([
+                'message' => $error->getMessage()
+            ], 500);
         }
     }
 

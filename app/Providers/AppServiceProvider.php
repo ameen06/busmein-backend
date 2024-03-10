@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Yajra\DataTables\Html\Builder;
 use Illuminate\Filesystem\FilesystemAdapter;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Storage;
 use ImageKit\ImageKit;
 use League\Flysystem\Filesystem;
@@ -44,5 +45,10 @@ class AppServiceProvider extends ServiceProvider
     {
         // set DataTable to use vitejs by default
         Builder::useVite();
+
+        // blade directive
+        Blade::directive('slug', function ($expression) {
+            return "<?php echo e(str()->slug($expression)); ?>";
+        });
     }
 }

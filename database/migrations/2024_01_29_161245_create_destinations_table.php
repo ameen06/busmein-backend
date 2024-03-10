@@ -17,8 +17,9 @@ return new class extends Migration
             $table->string('name');
             $table->string('address');
             $table->string('landmark');
-            $table->foreignId('media_id')->constrained();
             $table->string('type');
+            $table->foreignId('image')->nullable()->constrained('medias');
+            $table->boolean('has_return');
             $table->timestamps();
         });
     }

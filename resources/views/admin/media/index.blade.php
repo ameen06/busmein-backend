@@ -52,7 +52,7 @@
                     </div>
                     <!-- Modal footer -->
                     <div class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b">
-                        <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Add Media</button>
+                        <button type="submit" id="addMediaSubmitBtn" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center disabled:bg-blue-400">Add Media</button>
                         <button data-modal-hide="addMediaModal" type="button" class="closeModalBtn ms-3 text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10">Cancel</button>
                     </div>
                 </form>
@@ -132,9 +132,23 @@ $('.media-pond').filepond({
                 formData.append('_token', $('meta[name="csrf-token"]').attr('content'));
                 return formData;
             },
+            onerror: (response) => {
+                response = JSON.parse(response)
+                alert('error when uploading file ' + response.message);
+            }
         },
-    }
+    },
+    onprocessfiles: () => {
+        $('#addMediaSubmitBtn').attr('disabled', false);
+    },
+    onremovefile: () => {
+        $('#addMediaSubmitBtn').attr('disabled', true);
+    },
 });
+
+$(document).ready(function(){
+    $('#addMediaSubmitBtn').attr('disabled', true);
+})
 
 function dropActions(dropdownId){
     $(".actionsDropdownContent[data-dropdownid='" + dropdownId + "']").toggle();

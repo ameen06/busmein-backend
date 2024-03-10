@@ -8,4 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class Destination extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'slug',
+        'name',
+        'address',
+        'landmark',
+        'image',
+        'has_return',
+        'type'
+    ];
+    
+    protected $casts = [
+        'has_return' => 'boolean'
+    ];
 }
