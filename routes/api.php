@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Api\ApisForBookingController;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\BookingController;
 use App\Http\Controllers\Api\DestinationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -24,9 +26,17 @@ Route::prefix('auth')->group(function(){
 
 Route::get('destinations', [DestinationController::class, 'index']);
 
+Route::get('getBusForRoute', [ApisForBookingController::class, 'getBusForRoute']);
+Route::get('getBoardingPoints', [ApisForBookingController::class, 'getBoardingPoints']);
+Route::get('getDroppingPoints', [ApisForBookingController::class, 'getDroppingPoints']);
+
 Route::middleware(['auth:sanctum'])->group(function(){
     Route::get('/user', function (Request $request) {
         return $request->user();
     });
     Route::post('auth/logout', [AuthController::class, 'logout']);
+
+    // bookings
+    Route::get('bookings', [BookingController::class, 'index']);
+
 });

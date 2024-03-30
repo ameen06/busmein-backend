@@ -2,18 +2,16 @@
 
 namespace App\DataTables;
 
-use App\Models\Media;
-use App\Models\Medium;
+use App\Models\Route;
+use App\Models\RouteStop;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
-use Yajra\DataTables\Html\Editor\Editor;
-use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class MediaDataTable extends DataTable
+class RouteDataTable extends DataTable
 {
     /**
      * Build the DataTable class.
@@ -24,33 +22,20 @@ class MediaDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->addColumn('action', function($query){
-                return view('admin.media.actions', ['query' => $query])->render();
+                return view('admin.routes.actions', ['query' => $query])->render();
             })
-            ->addColumn('image', function($query){
-                return "<img src=". $query->url ." class='w-12'>";
+            ->addColumn('total_stops', function($query){
+                return RouteStop::where('route_id', $query->id)->count();
             })
-            ->rawColumns(['action','image'])
             ->setRowId('id');
-
-            config('filesystems.disks.public.url')
-            [
-                [
-                    [1,2,3],
-                    [4,5]
-                ],
-                [
-                    [6,7,8],
-                    [9,10]
-                ]
-            ]
     }
 
     /**
      * Get the query source of dataTable.
      */
-    public function query(Media $model): QueryBuilder
+    public function query(Route $model): QueryBuilder
     {
-        return $model->newQuery()->where('title', '!=', null);
+        return $model->newQuery()->with(['starting_point', 'ending_point']);
     }
 
     /**
@@ -59,12 +44,21 @@ class MediaDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-                    ->setTableId('media-table')
+                    ->setTableId('route-table')
+                    ->setTableHeadClass('bg-gray-200')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     ->orderBy(0)
                     ->selectStyleSingle()
                     ->buttons([
+                        Button::make('excel')   
+                            ->text('<i class="bi bi-file-spreadsheet"></i> Export Excel'),
+                        Button::make('csv')
+                            ->text('<i class="bi bi-filetype-csv"></i> Export CSV'),
+                        Button::make('pdf')
+                            ->text('<i class="bi bi-file-pdf"></i> Export PDF'),
+                        Button::make('print')
+                            ->text('<i class="bi bi-printer"></i> Print'),
                         Button::make('reload')
                             ->text('<i class="bi bi-arrow-repeat"></i> Reload'),
                     ])
@@ -85,10 +79,13 @@ class MediaDataTable extends DataTable
                 ->printable(false)
                 ->width(120)
                 ->addClass('relative text-left py-2'),
-            Column::make('image')
-                ->width(150),
-            Column::make('url'),
+            Column::make('id'),
             Column::make('title'),
+            Column::make('starting_point.name'),
+            Column::make('ending_point.name'),
+            Column::make('total_stops'),
+            Column::make('total_time'),
+            Column::make('total_distance'),
         ];
     }
 
@@ -97,6 +94,6 @@ class MediaDataTable extends DataTable
      */
     protected function filename(): string
     {
-        return 'Media_' . date('YmdHis');
+        return 'Route_' . date('YmdHis');
     }
 }

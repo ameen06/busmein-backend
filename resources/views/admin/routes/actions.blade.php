@@ -11,13 +11,13 @@
         </div>
         <ul class="text-sm text-gray-700 divide-y divide-gray-200">
             <li class="overflow-hidden">
-                <a href="{{ route('destinations.edit', $query->id) }}" class="block px-4 py-2 hover:bg-gray-100">Edit</a>
+                <a href="{{ route('routes.edit', $query->id) }}" class="block px-4 py-2 hover:bg-gray-100">Edit</a>
             </li>
             <li class="overflow-hidden">
-                <form method="POST" action="{{ route('destinations.destroy', $query->id) }}" class="w-full inline-flex">
+                <form method="POST" action="{{ route('routes.destroy', $query->id) }}" class="w-full inline-flex">
                     @csrf
                     @method('DELETE')
-                    <a href="{{ route('destinations.destroy', $query->id) }}" onclick="event.preventDefault();window.confirm('Are you sure');this.closest('form').submit();" class="w-full px-4 py-2 hover:bg-gray-100 text-red-500">
+                    <a href="{{ route('routes.destroy', $query->id) }}" onclick="event.preventDefault();if(window.confirm('Are you sure')){this.closest('form').submit()};" class="w-full px-4 py-2 hover:bg-gray-100 text-red-500">
                         Delete
                     </a>
                 </form>

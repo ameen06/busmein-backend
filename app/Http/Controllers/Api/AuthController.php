@@ -35,7 +35,7 @@ class AuthController extends Controller
                 'Channel' => 'sms',
             ];
 
-            $response = Http::withBasicAuth('ACbcfb96793d2a45f5c4b357b44a1c5abb', 'd8dda03518c5df2675322e569ef1b88f')->asForm()->post('https://verify.twilio.com/v2/Services/VA433267c1ff373fa13aa0c79c3aeb86f3/Verifications', $payload);
+            $response = Http::withBasicAuth('ACbcfb96793d2a45f5c4b357b44a1c5abb', '6edc3a54ba41571daa99735697894ac2')->asForm()->post('https://verify.twilio.com/v2/Services/VA433267c1ff373fa13aa0c79c3aeb86f3/Verifications', $payload);
     
             $response = $response->object();
 
@@ -87,7 +87,7 @@ class AuthController extends Controller
                 'Code' => $request->code,
             ];
 
-            $response = Http::withBasicAuth('ACbcfb96793d2a45f5c4b357b44a1c5abb', 'd8dda03518c5df2675322e569ef1b88f')->asForm()->post('https://verify.twilio.com/v2/Services/VA433267c1ff373fa13aa0c79c3aeb86f3/VerificationCheck', $payload);
+            $response = Http::withBasicAuth('ACbcfb96793d2a45f5c4b357b44a1c5abb', '6edc3a54ba41571daa99735697894ac2')->asForm()->post('https://verify.twilio.com/v2/Services/VA433267c1ff373fa13aa0c79c3aeb86f3/VerificationCheck', $payload);
     
             $response = $response->object();
 
@@ -152,7 +152,7 @@ class AuthController extends Controller
                 'Channel' => 'sms',
             ];
     
-            $response = Http::withBasicAuth('ACbcfb96793d2a45f5c4b357b44a1c5abb', 'd8dda03518c5df2675322e569ef1b88f')->asForm()->post('https://verify.twilio.com/v2/Services/VA433267c1ff373fa13aa0c79c3aeb86f3/Verifications', $payload);
+            $response = Http::withBasicAuth('ACbcfb96793d2a45f5c4b357b44a1c5abb', '6edc3a54ba41571daa99735697894ac2')->asForm()->post('https://verify.twilio.com/v2/Services/VA433267c1ff373fa13aa0c79c3aeb86f3/Verifications', $payload);
     
             $response = $response->object();
     

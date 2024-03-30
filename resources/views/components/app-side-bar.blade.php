@@ -27,9 +27,21 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('destinations.index') }}" class="w-full flex items-center px-4 py-3 text-gray-900 group {{ Route::current()->getName() == 'destinations.index' ? 'bg-slate-100' : 'hover:bg-gray-100' }}">
-                    <svg class="w-5 h-5 transition duration-75 {{ Route::current()->getName() == 'destinations.index' ? 'fill-blue-600' : 'fill-gray-500 group-hover:fill-gray-900' }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 12c2.206 0 4-1.794 4-4s-1.794-4-4-4-4 1.794-4 4 1.794 4 4 4zm1.5 1H8c-3.309 0-6 2.691-6 6v1h15v-1c0-3.309-2.691-6-6-6z"></path><path d="M16.604 11.048a5.67 5.67 0 0 0 .751-3.44c-.179-1.784-1.175-3.361-2.803-4.44l-1.105 1.666c1.119.742 1.8 1.799 1.918 2.974a3.693 3.693 0 0 1-1.072 2.986l-1.192 1.192 1.618.475C18.951 13.701 19 17.957 19 18h2c0-1.789-.956-5.285-4.396-6.952z"></path></svg>
-                    <span class="ms-4 text-lg {{ Route::current()->getName() == 'destinations.index' ? 'text-blue-600 font-bold' : '' }}">Administration</span>
+                <a href="{{ route('bookings.index') }}" class="w-full flex items-center px-4 py-3 text-gray-900 group {{ Route::current()->getName() == 'bookings.index' ? 'bg-slate-100' : 'hover:bg-gray-100' }}">
+                    <svg class="w-5 h-5 transition duration-75 {{ Route::current()->getName() == 'bookings.index' ? 'fill-blue-600' : 'fill-gray-500 group-hover:fill-gray-900' }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 4H2v2h2.3l3.521 9.683A2.004 2.004 0 0 0 9.7 17H18v-2H9.7l-.728-2H18c.4 0 .762-.238.919-.606l3-7A.998.998 0 0 0 21 4z"></path><circle cx="10.5" cy="19.5" r="1.5"></circle><circle cx="16.5" cy="19.5" r="1.5"></circle></svg>
+                    <span class="ms-4 text-lg {{ Route::current()->getName() == 'bookings.index' ? 'text-blue-600 font-bold' : '' }}">Bookings</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('buses.index') }}" class="w-full flex items-center px-4 py-3 text-gray-900 group {{ request()->segment(2) == 'buses' ? 'bg-slate-100' : 'hover:bg-gray-100' }}">
+                    <svg class="w-5 h-5 transition duration-75 {{ request()->segment(2) == 'buses' ? 'fill-blue-600' : 'fill-gray-500 group-hover:fill-gray-900' }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 6.021c.003-.146-.007-1.465-1.3-2.735C18.427 2.036 17.143 2 17 2H6.996c-.239 0-1.493.063-2.708 1.302C3.036 4.578 3 5.859 3 6v3H2v3h1v6c0 .734.406 1.373 1 1.721V21a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1h10v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1.277A1.99 1.99 0 0 0 21 18v-6h1V9h-1V6.021zM9 4h6v2H9V4zM6.5 18a1.5 1.5 0 1 1 .001-3.001A1.5 1.5 0 0 1 6.5 18zm4.5-5H5V8h6v5zm6.5 5a1.5 1.5 0 1 1 .001-3.001A1.5 1.5 0 0 1 17.5 18zm1.5-5h-6V8h6v5z"></path></svg>
+                    <span class="ms-4 text-lg {{ request()->segment(2) == 'buses' ? 'text-blue-600 font-bold' : '' }}">Buses</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('routes.index') }}" class="w-full flex items-center px-4 py-3 text-gray-900 group {{ request()->segment(2) == 'routes' ? 'bg-slate-100' : 'hover:bg-gray-100' }}">
+                    <svg class="w-5 h-5 transition duration-75 {{ request()->segment(2) == 'routes' ? 'fill-blue-600' : 'fill-gray-500 group-hover:fill-gray-900' }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.447 6.105-6-3a1 1 0 0 0-.895 0L9 5.882 3.447 3.105A1 1 0 0 0 2 4v13c0 .379.214.725.553.895l6 3a1 1 0 0 0 .895 0L15 18.118l5.553 2.776a.992.992 0 0 0 .972-.043c.295-.183.475-.504.475-.851V7c0-.379-.214-.725-.553-.895zM10 7.618l4-2v10.764l-4 2V7.618zm-6-2 4 2v10.764l-4-2V5.618zm16 12.764-4-2V5.618l4 2v10.764z"></path></svg>
+                    <span class="ms-4 text-lg {{ request()->segment(2) == 'routes' ? 'text-blue-600 font-bold' : '' }}">Routes</span>
                 </a>
             </li>
             <li class="hidden">
