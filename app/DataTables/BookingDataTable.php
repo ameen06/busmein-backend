@@ -71,12 +71,13 @@ class BookingDataTable extends DataTable
             Column::make('booking_id'),
             Column::make('ticket_number'),
             Column::make('user.name')->title('Booked User'),
-            Column::make('status'),
+            Column::make('billing_email'),
+            Column::make('billing_phone'),
             Column::make('boarding_point'),  
             Column::make('dropping_point'),
             Column::make('total_passangers'),
-            Column::make('total'),
-            Column::make('billing_email'),
+            Column::make('total_price'),
+            Column::make('status'),
         ];
     }
 

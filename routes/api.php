@@ -26,9 +26,9 @@ Route::prefix('auth')->group(function(){
 
 Route::get('destinations', [DestinationController::class, 'index']);
 
-Route::get('getBusForRoute', [ApisForBookingController::class, 'getBusForRoute']);
-Route::get('getBoardingPoints', [ApisForBookingController::class, 'getBoardingPoints']);
-Route::get('getDroppingPoints', [ApisForBookingController::class, 'getDroppingPoints']);
+Route::post('getBusForRoute', [ApisForBookingController::class, 'getBusForRoute']);
+Route::post('getBoardingPoints', [ApisForBookingController::class, 'getBoardingPoints']);
+Route::post('getDroppingPoints', [ApisForBookingController::class, 'getDroppingPoints']);
 
 Route::middleware(['auth:sanctum'])->group(function(){
     Route::get('/user', function (Request $request) {
@@ -38,5 +38,6 @@ Route::middleware(['auth:sanctum'])->group(function(){
 
     // bookings
     Route::get('bookings', [BookingController::class, 'index']);
+    Route::post('bookings', [BookingController::class, 'create']);
 
 });

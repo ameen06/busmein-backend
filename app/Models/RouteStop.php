@@ -11,15 +11,17 @@ class RouteStop extends Model
 
     protected $fillable = [
         'route_id',
-        'stop',
+        'stop_id',
         'time_it_takes'
     ];
 
     public function route(){
-        $this->belongsTo(Route::class);
+        return $this->belongsTo(Route::class);
     }
-
     public function stop(){
-        $this->belongsTo(Destination::class, 'stop');
+        return $this->belongsTo(Destination::class, 'stop_id');
+    }
+    public function price(){
+        return $this->belongsTo(ServicePrice::class);
     }
 }

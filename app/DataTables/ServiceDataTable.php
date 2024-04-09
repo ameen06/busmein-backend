@@ -2,7 +2,7 @@
 
 namespace App\DataTables;
 
-use App\Models\Supplier;
+use App\Models\Service;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
@@ -10,7 +10,7 @@ use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Services\DataTable;
 
-class SupplierDataTable extends DataTable
+class ServiceDataTable extends DataTable
 {
     /**
      * Build the DataTable class.
@@ -21,17 +21,21 @@ class SupplierDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->addColumn('action', function($query){
-                // returning actions-dropdown component
-                return view('suppliers.actions', ['query' => $query])->render();
-            });
+                return '<a id="actionsDropdownBtn" href="'. route('buses.services.edit', ['bus' => $query->bus_id, 'service' => $query->id]) .'" class="actionsDropdownBtn" type="button">Edit Service</a>';
+            })
+            ->editColumn('day', function($query){
+                $weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+                return $weekdays[$query->day];
+            })
+            ->setRowId('id');
     }
 
     /**
      * Get the query source of dataTable.
      */
-    public function query(Supplier $model): QueryBuilder
+    public function query(Service $model): QueryBuilder
     {
-        return $model->newQuery();
+        return $model->newQuery()->with('route')->where('bus_id', request()->route('bus')->id);
     }
 
     /**
@@ -40,7 +44,7 @@ class SupplierDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-                    ->setTableId('supplier-table')
+                    ->setTableId('service-table')
                     ->setTableHeadClass('bg-gray-200')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
@@ -71,14 +75,14 @@ class SupplierDataTable extends DataTable
     {
         return [
             Column::computed('action')
-                  ->exportable(false)
-                  ->printable(false)
-                  ->width(120)
-                  ->addClass('relative text-left py-2'),
-            Column::make('full_name'),
-            Column::make('contact_person'),
-            Column::make('phone'),
-            Column::make('email'),
+                ->exportable(false)
+                ->printable(false)
+                ->width(120)
+                ->addClass('relative text-left py-2'),
+            Column::make('title'),
+            Column::make('day'),
+            Column::make('start_time'),
+            Column::make('route.title'),
         ];
     }
 
@@ -87,6 +91,6 @@ class SupplierDataTable extends DataTable
      */
     protected function filename(): string
     {
-        return 'Supplier_' . date('YmdHis');
+        return 'Service_' . date('YmdHis');
     }
 }

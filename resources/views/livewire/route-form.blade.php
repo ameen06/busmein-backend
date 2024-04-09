@@ -31,7 +31,7 @@
                     @foreach ($route_stops as $index => $stop)  
                     <tr>
                         <td class="py-2">
-                            <select wire:model="route_stops.{{$index}}.stop" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-300 focus:border-blue-500 focus:ring-4 focus:outline-none block w-full p-2.5" required>
+                            <select wire:model="route_stops.{{$index}}.stop_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-300 focus:border-blue-500 focus:ring-4 focus:outline-none block w-full p-2.5" required>
                                 <option value="">Select Stop</option>
                                 @foreach ($all_points as $point)
                                 <option value="{{ $point->id }}">{{ $point->name }}</option>

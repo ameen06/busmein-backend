@@ -35,7 +35,7 @@ class RouteForm extends Component
     ])]
     public $route_stops = [
         [
-            'stop' => '',
+            'stop_id' => '',
             'time' => 1
         ]
     ];
@@ -58,7 +58,7 @@ class RouteForm extends Component
             $this->total_time = $route->total_time;
             $this->total_distance = $route->total_distance;
 
-            $stops = RouteStop::where('route_id', $this->edit_route)->select('id','stop','time_it_takes as time')->get()->toArray();
+            $stops = RouteStop::where('route_id', $this->edit_route)->select('id','stop_id','time_it_takes as time')->get()->toArray();
             array_splice($stops, 0, 1);
             array_splice($stops, (count($stops) - 1), 1);
             $this->route_stops = $stops;
@@ -88,7 +88,7 @@ class RouteForm extends Component
 
             RouteStop::create([
                 'route_id' => $route->id,
-                'stop' => $this->starting_point,
+                'stop_id' => $this->starting_point,
                 'time_it_takes' => 0,
             ]);
 
@@ -96,7 +96,7 @@ class RouteForm extends Component
                 foreach($this->route_stops as $stop){
                     RouteStop::create([
                         'route_id' => $route->id,
-                        'stop' => $stop['stop'],
+                        'stop_id' => $stop['stop_id'],
                         'time_it_takes' => $stop['time'],
                     ]);
                 }
@@ -104,7 +104,7 @@ class RouteForm extends Component
 
             RouteStop::create([
                 'route_id' => $route->id,
-                'stop' => $this->ending_point,
+                'stop_id' => $this->ending_point,
                 'time_it_takes' => $this->total_time,
             ]);
      
@@ -131,7 +131,7 @@ class RouteForm extends Component
 
             RouteStop::create([
                 'route_id' => $this->edit_route,
-                'stop' => $this->starting_point,
+                'stop_id' => $this->starting_point,
                 'time_it_takes' => 0,
             ]);
 
@@ -139,7 +139,7 @@ class RouteForm extends Component
                 foreach($this->route_stops as $stop){
                     RouteStop::create([
                         'route_id' => $this->edit_route,
-                        'stop' => $stop['stop'],
+                        'stop_id' => $stop['stop_id'],
                         'time_it_takes' => $stop['time'],
                     ]);
                 }
@@ -147,7 +147,7 @@ class RouteForm extends Component
 
             RouteStop::create([
                 'route_id' => $this->edit_route,
-                'stop' => $this->ending_point,
+                'stop_id' => $this->ending_point,
                 'time_it_takes' => $this->total_time,
             ]);
      
@@ -156,7 +156,7 @@ class RouteForm extends Component
             return $this->redirect(route('routes.index'));
         } catch(Exception $error) {
             DB::rollBack();
-            return redirect()->back()->withInput()->with(['alert' => true, 'alertColor' => 'red', 'message' => $error->getMessage()]);
+            return $this->addError('error', $error->getMessage());
         }
     }
 

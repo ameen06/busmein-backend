@@ -14,17 +14,5 @@
     <button class="ml-4" id="close-alert-btn">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="fill-gray-700"><path d="m16.192 6.344-4.243 4.242-4.242-4.242-1.414 1.414L10.535 12l-4.242 4.242 1.414 1.414 4.242-4.242 4.243 4.242 1.414-1.414L13.364 12l4.242-4.242z"></path></svg>
     </button>
-
-    <script>
-        $(document).ready(function(){
-            setTimeout(function(){
-                $('#alert').addClass('hidden');
-            }, 15000);
-
-            $('#close-alert-btn').on('click', function(){
-                $('#alert').addClass('hidden');
-            });
-        });
-    </script>
 </div>
 @endif

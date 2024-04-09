@@ -21,12 +21,6 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('destinations.index') }}" class="w-full flex items-center px-4 py-3 text-gray-900 group {{ Route::current()->getName() == 'destinations.index' ? 'bg-slate-100' : 'hover:bg-gray-100' }}">
-                    <svg class="w-5 h-5 transition duration-75 {{ Route::current()->getName() == 'destinations.index' ? 'fill-blue-600' : 'fill-gray-500 group-hover:fill-gray-900' }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 22s8.029-5.56 8-12c0-4.411-3.589-8-8-8S4 5.589 4 9.995C3.971 16.44 11.696 21.784 12 22zM8 9h3V6h2v3h3v2h-3v3h-2v-3H8V9z"></path></svg>
-                    <span class="ms-4 text-lg {{ Route::current()->getName() == 'destinations.index' ? 'text-blue-600 font-bold' : '' }}">Destinations</span>
-                </a>
-            </li>
-            <li>
                 <a href="{{ route('bookings.index') }}" class="w-full flex items-center px-4 py-3 text-gray-900 group {{ Route::current()->getName() == 'bookings.index' ? 'bg-slate-100' : 'hover:bg-gray-100' }}">
                     <svg class="w-5 h-5 transition duration-75 {{ Route::current()->getName() == 'bookings.index' ? 'fill-blue-600' : 'fill-gray-500 group-hover:fill-gray-900' }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 4H2v2h2.3l3.521 9.683A2.004 2.004 0 0 0 9.7 17H18v-2H9.7l-.728-2H18c.4 0 .762-.238.919-.606l3-7A.998.998 0 0 0 21 4z"></path><circle cx="10.5" cy="19.5" r="1.5"></circle><circle cx="16.5" cy="19.5" r="1.5"></circle></svg>
                     <span class="ms-4 text-lg {{ Route::current()->getName() == 'bookings.index' ? 'text-blue-600 font-bold' : '' }}">Bookings</span>
@@ -42,6 +36,12 @@
                 <a href="{{ route('routes.index') }}" class="w-full flex items-center px-4 py-3 text-gray-900 group {{ request()->segment(2) == 'routes' ? 'bg-slate-100' : 'hover:bg-gray-100' }}">
                     <svg class="w-5 h-5 transition duration-75 {{ request()->segment(2) == 'routes' ? 'fill-blue-600' : 'fill-gray-500 group-hover:fill-gray-900' }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.447 6.105-6-3a1 1 0 0 0-.895 0L9 5.882 3.447 3.105A1 1 0 0 0 2 4v13c0 .379.214.725.553.895l6 3a1 1 0 0 0 .895 0L15 18.118l5.553 2.776a.992.992 0 0 0 .972-.043c.295-.183.475-.504.475-.851V7c0-.379-.214-.725-.553-.895zM10 7.618l4-2v10.764l-4 2V7.618zm-6-2 4 2v10.764l-4-2V5.618zm16 12.764-4-2V5.618l4 2v10.764z"></path></svg>
                     <span class="ms-4 text-lg {{ request()->segment(2) == 'routes' ? 'text-blue-600 font-bold' : '' }}">Routes</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('destinations.index') }}" class="w-full flex items-center px-4 py-3 text-gray-900 group {{ Route::current()->getName() == 'destinations.index' ? 'bg-slate-100' : 'hover:bg-gray-100' }}">
+                    <svg class="w-5 h-5 transition duration-75 {{ Route::current()->getName() == 'destinations.index' ? 'fill-blue-600' : 'fill-gray-500 group-hover:fill-gray-900' }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 22s8.029-5.56 8-12c0-4.411-3.589-8-8-8S4 5.589 4 9.995C3.971 16.44 11.696 21.784 12 22zM8 9h3V6h2v3h3v2h-3v3h-2v-3H8V9z"></path></svg>
+                    <span class="ms-4 text-lg {{ Route::current()->getName() == 'destinations.index' ? 'text-blue-600 font-bold' : '' }}">Places</span>
                 </a>
             </li>
             <li class="hidden">

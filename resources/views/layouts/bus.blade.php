@@ -39,15 +39,9 @@
                     </a>
                 </li>
                 <li class="me-2">
-                    <a href="#" class="inline-flex items-center justify-center p-4 border-b-2 rounded-t-lg group {{ Str::startsWith(Route::current()->getName(), 'projects.suppliers.') ? 'text-blue-600 border-blue-600' : 'hover:text-gray-600 border-transparent hover:border-gray-300' }}">
-                        <svg class="w-5 h-5 me-2 {{ Str::startsWith(Route::current()->getName(), 'projects.works.') ? 'fill-blue-600' : 'fill-gray-400 group-hover:fill-gray-500' }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m2.513 12.833 9.022 5.04a.995.995 0 0 0 .973.001l8.978-5a1 1 0 0 0-.002-1.749l-9.022-5a1 1 0 0 0-.968-.001l-8.978 4.96a1 1 0 0 0-.003 1.749z"></path><path d="m3.485 15.126-.971 1.748 9 5a1 1 0 0 0 .971 0l9-5-.971-1.748L12 19.856l-8.515-4.73zM20 8V6h2V4h-2V2h-2v2h-2v2h2v2z"></path></svg>
-                        Daily Service
-                    </a>
-                </li>
-                <li class="me-2">
-                    <a href="#" class="inline-flex items-center justify-center p-4 border-b-2 rounded-t-lg group {{ Str::startsWith(Route::current()->getName(), 'projects.suppliers.') ? 'text-blue-600 border-blue-600' : 'hover:text-gray-600 border-transparent hover:border-gray-300' }}">
-                        <svg class="w-5 h-5 me-2 {{ Str::startsWith(Route::current()->getName(), 'projects.works.') ? 'fill-blue-600' : 'fill-gray-400 group-hover:fill-gray-500' }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m2.513 12.833 9.022 5.04a.995.995 0 0 0 .973.001l8.978-5a1 1 0 0 0-.002-1.749l-9.022-5a1 1 0 0 0-.968-.001l-8.978 4.96a1 1 0 0 0-.003 1.749z"></path><path d="m3.485 15.126-.971 1.748 9 5a1 1 0 0 0 .971 0l9-5-.971-1.748L12 19.856l-8.515-4.73zM20 8V6h2V4h-2V2h-2v2h-2v2h2v2z"></path></svg>
-                        Amenities
+                    <a href="{{ route('buses.services.index', $bus->id) }}" class="inline-flex items-center justify-center p-4 border-b-2 rounded-t-lg group {{ Str::startsWith(Route::current()->getName(), 'buses.services.') ? 'text-blue-600 border-blue-600' : 'hover:text-gray-600 border-transparent hover:border-gray-300' }}">
+                        <svg class="w-5 h-5 me-2 {{ Str::startsWith(Route::current()->getName(), 'buses.services.') ? 'fill-blue-600' : 'fill-gray-400 group-hover:fill-gray-500' }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 13h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1zm-1 7a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v4zm10 0a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-7a1 1 0 0 0-1-1h-6a1 1 0 0 0-1 1v7zm1-10h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1h-6a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1z"></path></svg>
+                        Daily Services
                     </a>
                 </li>
             </ul>

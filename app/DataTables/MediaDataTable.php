@@ -31,18 +31,6 @@ class MediaDataTable extends DataTable
             })
             ->rawColumns(['action','image'])
             ->setRowId('id');
-
-            config('filesystems.disks.public.url')
-            [
-                [
-                    [1,2,3],
-                    [4,5]
-                ],
-                [
-                    [6,7,8],
-                    [9,10]
-                ]
-            ]
     }
 
     /**

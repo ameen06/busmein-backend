@@ -18,6 +18,14 @@ class Booking extends Model
     {
         return $this->belongsTo(Bus::class);
     }
+    public function boarding()
+    {
+        return $this->belongsTo(Destination::class, 'boarding_point');
+    }
+    public function dropping()
+    {
+        return $this->belongsTo(Destination::class, 'dropping_point');
+    }
     public function passengers()
     {
         return $this->hasMany(Passenger::class);

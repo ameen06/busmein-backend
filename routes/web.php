@@ -3,11 +3,13 @@
 use App\Http\Controllers\Admin\BookingController;
 use App\Http\Controllers\Admin\Bus\BusController;
 use App\Http\Controllers\Admin\Bus\SeatingController;
+use App\Http\Controllers\Admin\Bus\ServiceController;
 use App\Http\Controllers\Admin\DestinationController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\MediaController;
 use App\Http\Controllers\Admin\RouteController;
+use App\Models\RouteStop;
 use Illuminate\Http\Request;
 
 /*
@@ -66,7 +68,8 @@ Route::prefix('app')->middleware('auth:admin')->group(function () {
     Route::resource('buses', BusController::class);
     Route::get('buses/{bus}/seating', [SeatingController::class, 'edit'])->name('buses.seating.edit');
     Route::put('buses/{bus}/seating', [SeatingController::class, 'update'])->name('buses.seating.update');
-
+    Route::resource('buses.services', ServiceController::class);
+    
 
     // bookings
     Route::get('bookings', [BookingController::class, 'index'])->name('bookings.index');

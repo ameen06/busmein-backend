@@ -28,6 +28,6 @@ class Route extends Model
     }
 
     public function stops(){
-        $this->hasMany(RouteStop::class);
+        return $this->hasMany(RouteStop::class);
     }
 }

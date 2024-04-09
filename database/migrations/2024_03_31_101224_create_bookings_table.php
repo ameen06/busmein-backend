@@ -13,22 +13,23 @@ return new class extends Migration
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('bus_id')->nullable()->constrained()->nullOnDelete();
             $table->foreignId('user_id')->nullable()->constrained()->nullOnDelete();
+            $table->foreignId('route_id')->nullable()->constrained()->nullOnDelete();
+            $table->foreignId('service_id')->nullable()->constrained()->nullOnDelete();
+            $table->foreignId('bus_id')->nullable()->constrained()->nullOnDelete();
             $table->string('ticket_number');
             $table->string('booking_id');
             $table->string('status');
-            $table->string('boarding_point');
+            $table->foreignId('boarding_point')->nullable()->constrained('destinations')->nullOnDelete();
             $table->dateTime('boarding_time');
-            $table->string('dropping_point');
+            $table->foreignId('dropping_point')->nullable()->constrained('destinations')->nullOnDelete();
             $table->dateTime('dropping_time');
             $table->integer('total_passangers');
-            $table->string('seat_numbers');
-            $table->decimal('total', 12, 2);
+            $table->decimal('total_price', 12, 2);
             $table->decimal('discount', 12, 2);
             $table->decimal('platform_fee', 12, 2);
             $table->decimal('tax', 12, 2);
-            $table->string('barcode');
+            $table->string('barcode')->nullable();
             $table->string('billing_email');
             $table->string('billing_phone');
             $table->timestamps();

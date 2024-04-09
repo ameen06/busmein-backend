@@ -9,6 +9,14 @@ class Passenger extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'booking_id',
+        'seat_number',
+        'name',
+        'age',
+        'gender',
+    ];
+
     // relationships
     public function booking()
     {

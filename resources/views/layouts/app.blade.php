@@ -46,6 +46,15 @@
             function dropActions(dropdownId){
                 $(".actionsDropdownContent[data-dropdownid='" + dropdownId + "']").toggle();
             }
+            $(document).ready(function(){
+                setTimeout(function(){
+                    $('#alert').addClass('hidden');
+                }, 15000);
+
+                $('#close-alert-btn').on('click', function(){
+                    $('#alert').addClass('hidden');
+                });
+            });
         </script>
     </body>
 </html>
